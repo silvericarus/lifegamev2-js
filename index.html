@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game of Life v2</title>
+        <link rel="stylesheet" href="./css/bulma.min.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <form>
+                            <div class="field is-grouped"
+                                style="display: flex;
+                                flex-direction: column;
+                                align-items: left;
+                                flex-wrap: wrap;">
+                                <div class="control">
+                                    <label class="label">Survival Bottom Rule</label>
+                                    <input class="input" type="number" name="survival1" value="2">
+                                </div>
+                                <div class="control">
+                                    <label class="label">Survival Top Rule</label>
+                                    <input class="input" type="number" name="survival2" value="3">
+                                </div>
+                                <div class="control">
+                                    <label class="label">Birth Rule</label>
+                                    <input class="input" type="number" name="birth1" value="3">
+                                </div>
+                                <div class="control">
+                                    <label class="label">Birth Rule 2 (optional)</label>
+                                    <input class="input" type="number" name="birth2" placeholder="0">
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <canvas id="game">
+        </canvas>
+    </body>
+</html>
