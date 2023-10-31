@@ -30,10 +30,11 @@ class Cell {
             var xNeighbour, yNeighbour;
             for (var i = -1; i < 2; i++) {
                 for (var j = -1; j < 2; j++) {
-                    xNeighbour = (this.x + j + cols) % cols;
-                    yNeighbour = (this.y + i + rows) % rows;
-                    if (i != 0 || j != 0)
+                    if (i !== 0 && j !== 0){
+                        xNeighbour = (this.x + j + cols) % cols;
+                        yNeighbour = (this.y + i + rows) % rows;
                         this.neighbours.push(board[yNeighbour][xNeighbour]);
+                    }
                 }
             }
         };
@@ -55,10 +56,19 @@ class Cell {
                 aliveNeighbours += this.neighbours[i].status;
             }
             this.nextStatus = this.status;
-            if (aliveNeighbours < survivalRule1 || aliveNeighbours > survivalRule2)
-                this.nextStatus = 0;
-            else if (aliveNeighbours > birthRule1 || aliveNeighbours > birthRule2)
-                this.nextStatus = 1;
+            if (this.status === 1) {
+                if (aliveNeighbours > survivalRule2)
+                    this.nextStatus = 0;
+                else if (aliveNeighbours < survivalRule1)
+                    this.nextStatus = 0;
+            }
+            else
+            {
+                if (aliveNeighbours === birthRule1)
+                    this.nextStatus = 1;
+                else if (aliveNeighbours === birthRule2)
+                    this.nextStatus = 1;
+            }
         };
         this.evolve = function () {
             this.status = this.nextStatus;
